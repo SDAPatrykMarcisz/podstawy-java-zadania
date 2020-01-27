@@ -1,9 +1,11 @@
 package software.development.academy;
 
+import java.util.Scanner;
+
 public class Zadania {
 
     public static void main(String[] args) {
-        zadanie1();
+        zadanie3();
     }
 
     //zadeklaruj dwie zmienne: [source,java]
@@ -28,6 +30,34 @@ public class Zadania {
         str1 = strC;
 
         System.out.println(str1 + " " + str2);
+
+    }
+
+    //Przypisz 18 (literał) do zmiennych typu: byte, short, int, long, double, float. Analogiczną operację wykonaj dla wartosci 35000 oraz 3_500_000_000
+    //• Dla jakich typów uda się te operacje, dla jakich trzeba zastosować dodatkowe rzutowania? • jakie są rezultaty wydruku takich wartości
+    static void zadanie2(){
+        byte byte3 = (byte)3_500_000_000L;
+    }
+
+    //Napisz program dodający dwie liczby podane przez użytkownika
+    static void zadanie3(){
+
+        Scanner naszSkaner = new Scanner(System.in);
+        System.out.println("Wypisz liczbę x: ");
+        int x = naszSkaner.nextInt();
+
+        System.out.println("Wypisz liczbe y: ");
+        int y = naszSkaner.nextInt();
+
+        int suma = x + y;
+        int roznica = x - y;
+        int mnozenie = x * y;
+        double dzielenie = (double)x / y;
+
+        System.out.println("suma " + suma);
+        System.out.println("roznica " + roznica);
+        System.out.println("mnozenie " + mnozenie);
+        System.out.println("dzielenie " + dzielenie);
 
     }
 }
