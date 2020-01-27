@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Zadania {
 
     public static void main(String[] args) {
-        zadanie5v2();
+        zadanie9();
     }
 
     //zadeklaruj dwie zmienne: [source,java]
@@ -172,6 +172,104 @@ public class Zadania {
                 licznikWiekszychOdZera += 1;
             }
         }
+    }
+
+    //Oswój się z operacjami matematycznymi, przetestuj każdą z nich w następujący sposób:
+    //• zadeklaruj zmienne a i b, następnie przypisz wynik kolejnych operacji do zmiennych c,d,e,f • Oblicz średnią z tych liczb
+    static void zadanie6() {
+        double a = 50;
+        double b = 34.12;
+        double c = a * b;
+        double d = a / b;
+        double e = c + d / b;
+        double f = a * a;
+
+        double srednia = (a + b + c + d + e + f) / 6;
+
+    }
+
+    static void zadanie6v2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("ile liczb bedziemy sprawdzac ? ");
+        int ileLiczb = scanner.nextInt();
+        double suma = 0;
+
+        for (int i = 0; i < ileLiczb; i++) { // blok pomiedzy { } wykonuje sie tyle razy ile wyliczono obrotow petli
+            System.out.print("podaj kolejną liczbę: ");
+            double x = scanner.nextDouble();
+            suma += x; //suma = suma + x;
+        }
+
+        double srednia = suma / ileLiczb;
+
+        System.out.println("srednia: " + srednia);
+    }
+
+    static void zadanie7(){
+        double r = 10.0;
+        double pole = Math.PI * Math.pow(r,2);
+        double pole2 = Math.PI * Math.pow(r,2);
+        double pole3 = Math.PI * Math.pow(r,2);
+        double pole4 = Math.PI * Math.pow(r,2);
+        double obwod = 2 * Math.PI * r;
+    }
+
+    static void zadanie7v2(){
+        double promien5 = 5.0;
+        double pole1 = poleKola(2.0 + 4.0 + 8.0 / 30 * 5);
+        double pole2 = poleKola(promien5);
+        double pole3 = poleKola(promien10() + 2.0 + promien10());
+
+    }
+
+    static double promien10(){
+        return 10.0;
+    }
+
+    static double pobierzLiczbeZeScannera(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("podaj liczbe");
+        return scanner.nextDouble();
+    }
+
+    static double poleKola(double promien){
+        double pole = Math.PI * Math.pow(promien,2);
+        return pole;
+        //return Math.PI * Math.pow(r,2);
+    }
+
+    //jak sprawdzić czy zadana liczba jest parzysta ?
+    static void zadanie8(){
+        int liczba = 13;
+        int wynik = liczba % 2;
+        boolean parzysta = (liczba % 2 == 0);
+        boolean nieParzysta = (liczba % 2 == 1);
+
+        boolean jestParzysta = parzysta(liczba);
+        boolean jestNieparzysta = !parzysta(liczba);
+
+        boolean jestParzystav3 = liczba%2 == 0 ? true : false;
+        if(liczba % 2 == 0){
+            System.out.println("jest parzysta");
+        } else {
+            System.out.println("jest nieparzysta");
+        }
+    }
+
+    static boolean parzysta(int liczbaDoSprawdzenia){
+        return liczbaDoSprawdzenia % 2 == 0;
+    }
+
+    //jaką wartość przyjmą zmienne x,y,z ?
+    //int x = 5; int y = ++x + x++; int z = ++y;
+    static void zadanie9(){
+        int x = 5;
+        int y = ++x + x++; //najpierw zwiekszamy ++x z 5 do 6, wiec wyrazenie ma wartosc 6 + 6 = 12,
+        // po obliczeniu wartosc x zwiekszala sie do 7
+        int z = ++y; //wartosc y zwiekszona do 13, z = 13
+
+        System.out.println(x + " " + y + " " + z);
+
     }
 
 
