@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Zadania {
 
     public static void main(String[] args) {
-        zadanie4();
+        zadanie5v2();
     }
 
     //zadeklaruj dwie zmienne: [source,java]
@@ -90,11 +90,90 @@ public class Zadania {
             System.out.println("1 rozwiazanie");
         else System.out.println("bez rozwiazan");
 
-        String wynik = (delta >= 0)
-                ? (delta == 0 || delta == -0) ? "1 rozwiazania" : "2 rozwiazania"
+        String wynik = (delta > 0)
+                ? "2 rozwiazania"
+                : (delta == 0)
+                ? "1 rozwiaznie"
                 : "brak rozwiazan";
         System.out.println(wynik);
     }
+
+    //Zadeklaruj 3 zmienne typu zmiennoprzecinkowego.
+    // Następnie sprawdź ile z nich jest większych od zera.
+    // Wypisz odpowiedni komunikat.
+    static void zadanie5() {
+        double x = 4.24;
+        double y = -4.30;
+        double z = 3.14;
+
+        int licznikWiekszychOdZera = 0;
+        if (x > 0) {
+            licznikWiekszychOdZera += 1;
+        }
+        if (y > 0) {
+            licznikWiekszychOdZera += 1;
+        }
+        if (z > 0) {
+            licznikWiekszychOdZera += 1;
+        }
+
+        System.out.println("wiekszych od zera: " + licznikWiekszychOdZera);
+    }
+
+    //Zadeklaruj 3 zmienne typu zmiennoprzecinkowego.
+    // Następnie sprawdź ile z nich jest większych od zera.
+    // Wypisz odpowiedni komunikat.
+    static void zadanie5v2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("ile liczb bedziemy sprawdzac ? ");
+        int ileLiczb = scanner.nextInt();
+        int licznikWiekszychOdZera = 0;
+
+        for (int i = 0; i < ileLiczb; i++) { // blok pomiedzy { } wykonuje sie tyle razy ile wyliczono obrotow petli
+            System.out.print("podaj kolejną liczbę: ");
+            double x = scanner.nextDouble();
+            if (x > 0) {
+                licznikWiekszychOdZera += 1;
+            }
+        }
+
+        System.out.println("wiekszych liczb od zera: " + licznikWiekszychOdZera);
+
+    }
+
+    static void zadanie5v3() {
+        int ileLiczb = 3;
+        int licznikWiekszychOdZera = 0;
+        double xx = 4.24;
+        double y = -4.30;
+        double z = 3.14;
+
+        {
+            System.out.print("podaj kolejną liczbę: ");
+            double x = xx;
+            if (x > 0) {
+                licznikWiekszychOdZera += 1;
+            }
+        }
+
+        {
+            System.out.print("podaj kolejną liczbę: ");
+            double x = y;
+            if (x > 0) {
+                licznikWiekszychOdZera += 1;
+            }
+        }
+
+        {
+            System.out.print("podaj kolejną liczbę: ");
+
+            double x = z;
+            if (x > 0) {
+                licznikWiekszychOdZera += 1;
+            }
+        }
+    }
+
 
 
 }
