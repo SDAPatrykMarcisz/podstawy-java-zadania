@@ -2,6 +2,8 @@ package software.development.academy;
 
 import java.util.Scanner;
 
+import static java.lang.String.*;
+
 public class Zadania {
 
     //zadeklaruj dwie zmienne: [source,java]
@@ -509,20 +511,21 @@ public class Zadania {
         } while (liczba > 0);
         System.out.println(suma);
     }
-    static void piramidka(int poziomy){
+
+    static void piramidka(int poziomy) {
         int maksymalnaSzerokosc = 2 * poziomy - 1;
-        for(int i=0; i<poziomy; i++){
-            int aktualnyPoziom = i+1;
+        for (int i = 0; i < poziomy; i++) {
+            int aktualnyPoziom = i + 1;
             int iloscBialychZnakow = poziomy - aktualnyPoziom;
             int iloscCzarnychZnakow = 2 * aktualnyPoziom - 1;
 
 
-            for(int j = 0; j< maksymalnaSzerokosc; j++){
+            for (int j = 0; j < maksymalnaSzerokosc; j++) {
                 boolean lewaSciana = j == iloscBialychZnakow;
-                boolean prawaSciana = j == iloscBialychZnakow + iloscCzarnychZnakow -1;
-                if(j < iloscBialychZnakow){
+                boolean prawaSciana = j == iloscBialychZnakow + iloscCzarnychZnakow - 1;
+                if (j < iloscBialychZnakow) {
                     System.out.print(" ");
-                } else if ( lewaSciana || prawaSciana || i==poziomy-1){ //else if(j < (iloscBialychZnakow + iloscCzarnychZnakow)){
+                } else if (lewaSciana || prawaSciana || i == poziomy - 1) { //else if(j < (iloscBialychZnakow + iloscCzarnychZnakow)){
                     System.out.print("#");
                 } else {
                     System.out.print(" ");
@@ -532,15 +535,15 @@ public class Zadania {
         }
     }
 
-    static void piramidkaOdwrocona(int poziomy){
+    static void piramidkaOdwrocona(int poziomy) {
         int maksymalnaSzerokosc = 2 * poziomy - 1;
-        for(int i=0; i<poziomy; i++){
+        for (int i = 0; i < poziomy; i++) {
             int iloscBialychZnakow = i;
             int czarnychZnakow = maksymalnaSzerokosc - 2 * (i);
-            for(int j = 0; j < maksymalnaSzerokosc; j++){
-                if(j < iloscBialychZnakow){
+            for (int j = 0; j < maksymalnaSzerokosc; j++) {
+                if (j < iloscBialychZnakow) {
                     System.out.print(" ");
-                } else if(j < iloscBialychZnakow + czarnychZnakow){
+                } else if (j < iloscBialychZnakow + czarnychZnakow) {
                     System.out.print("#");
                 }
             }
@@ -549,13 +552,13 @@ public class Zadania {
     }
 
     //Napisz program, który sprawdzi czy z podanej długości boków a,b,c można zbudować trójkąt
-    static void zadanie23(int a, int b, int c){
-        boolean cond1 = a < b+c; //b+c > a
-        boolean cond2 = b < a+c; //a+c > b
-        boolean cond3 = c < a+b; //a+b > c
+    static void zadanie23(int a, int b, int c) {
+        boolean cond1 = a < b + c; //b+c > a
+        boolean cond2 = b < a + c; //a+c > b
+        boolean cond3 = c < a + b; //a+b > c
 
         boolean totalCondition = (cond1 && cond2 && cond3);
-        if(totalCondition){
+        if (totalCondition) {
             System.out.println("mozna stworzyc trojkat");
         } else {
             System.out.println("nie mozna stworzyc trojkata");
@@ -563,30 +566,30 @@ public class Zadania {
 
         boolean rownoboczny = (a == b) && (a == c);
         boolean rownoramienny = (a == b) || (a == c) || (b == c);
-        boolean prostokatny = (Math.pow(a,2) + Math.pow(b,2) == Math.pow(c,2))
-                || (Math.pow(a,2) + Math.pow(c,2) == Math.pow(b,2))
-                || (Math.pow(b,2) + Math.pow(c,2) == Math.pow(a,2));
+        boolean prostokatny = (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2))
+                || (Math.pow(a, 2) + Math.pow(c, 2) == Math.pow(b, 2))
+                || (Math.pow(b, 2) + Math.pow(c, 2) == Math.pow(a, 2));
     }
 
     //Przy pomocy instrukcji switch napisz prosty kalkulator, gdzie argumentem switch jest znak operacji ( +, -, *, /)
-    static double kalkulator(double a, double b, String operacja){
+    static double kalkulator(double a, double b, String operacja) {
         //Enum, int, char, byte, long, short, "String"
         double wynik;
-        switch(operacja){
+        switch (operacja) {
             case "+": { // <--- on tu wejdzie, kiedy operacja == '+'
                 return wynik = a + b;
             }
-            case "-":{
+            case "-": {
                 return wynik = a - b;
             }
-            case "*" : {
+            case "*": {
                 return wynik = a * b;
             }
-            case "/" : {
+            case "/": {
                 return wynik = a / b;
             }
 
-            default : {
+            default: {
                 return wynik = 0;
             }
         }
@@ -594,6 +597,13 @@ public class Zadania {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int[] liczby = {1, 3, 5, 7, 9};
+        String[] teksty = {"jeden", "dwa", "trzy", "cztery"};
+        String sTrzy = teksty[2];//trzy
+        for (int i = 0; i < liczby.length; i++) {
+            System.out.println(liczby[i]);
+        }
+        liczby[2] = 10;
         double kalkulator = kalkulator(pobierzDouble(scanner), pobierzDouble(scanner), scanner.next());
         System.out.println(kalkulator);
     }
