@@ -498,6 +498,7 @@ public class Zadania {
     }
 
     //Oblicz sumę cyfr zadanej liczby
+
     static void sumaCyfrZadanejLiczby() {
         int liczba = 112321323;
         int suma = 0;
@@ -508,9 +509,100 @@ public class Zadania {
         } while (liczba > 0);
         System.out.println(suma);
     }
+    static void piramidka(int poziomy){
+        int maksymalnaSzerokosc = 2 * poziomy - 1;
+        for(int i=0; i<poziomy; i++){
+            int aktualnyPoziom = i+1;
+            int iloscBialychZnakow = poziomy - aktualnyPoziom;
+            int iloscCzarnychZnakow = 2 * aktualnyPoziom - 1;
 
+
+            for(int j = 0; j< maksymalnaSzerokosc; j++){
+                boolean lewaSciana = j == iloscBialychZnakow;
+                boolean prawaSciana = j == iloscBialychZnakow + iloscCzarnychZnakow -1;
+                if(j < iloscBialychZnakow){
+                    System.out.print(" ");
+                } else if ( lewaSciana || prawaSciana || i==poziomy-1){ //else if(j < (iloscBialychZnakow + iloscCzarnychZnakow)){
+                    System.out.print("#");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    static void piramidkaOdwrocona(int poziomy){
+        int maksymalnaSzerokosc = 2 * poziomy - 1;
+        for(int i=0; i<poziomy; i++){
+            int iloscBialychZnakow = i;
+            int czarnychZnakow = maksymalnaSzerokosc - 2 * (i);
+            for(int j = 0; j < maksymalnaSzerokosc; j++){
+                if(j < iloscBialychZnakow){
+                    System.out.print(" ");
+                } else if(j < iloscBialychZnakow + czarnychZnakow){
+                    System.out.print("#");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    //Napisz program, który sprawdzi czy z podanej długości boków a,b,c można zbudować trójkąt
+    static void zadanie23(int a, int b, int c){
+        boolean cond1 = a < b+c; //b+c > a
+        boolean cond2 = b < a+c; //a+c > b
+        boolean cond3 = c < a+b; //a+b > c
+
+        boolean totalCondition = (cond1 && cond2 && cond3);
+        if(totalCondition){
+            System.out.println("mozna stworzyc trojkat");
+        } else {
+            System.out.println("nie mozna stworzyc trojkata");
+        }
+
+        boolean rownoboczny = (a == b) && (a == c);
+        boolean rownoramienny = (a == b) || (a == c) || (b == c);
+        boolean prostokatny = (Math.pow(a,2) + Math.pow(b,2) == Math.pow(c,2))
+                || (Math.pow(a,2) + Math.pow(c,2) == Math.pow(b,2))
+                || (Math.pow(b,2) + Math.pow(c,2) == Math.pow(a,2));
+    }
+
+    //Przy pomocy instrukcji switch napisz prosty kalkulator, gdzie argumentem switch jest znak operacji ( +, -, *, /)
+    static double kalkulator(double a, double b, String operacja){
+        //Enum, int, char, byte, long, short, "String"
+        double wynik;
+        switch(operacja){
+            case "+": { // <--- on tu wejdzie, kiedy operacja == '+'
+                return wynik = a + b;
+            }
+            case "-":{
+                return wynik = a - b;
+            }
+            case "*" : {
+                return wynik = a * b;
+            }
+            case "/" : {
+                return wynik = a / b;
+            }
+
+            default : {
+                return wynik = 0;
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        sumaCyfrZadanejLiczby();
+        Scanner scanner = new Scanner(System.in);
+        double kalkulator = kalkulator(pobierzDouble(scanner), pobierzDouble(scanner), scanner.next());
+        System.out.println(kalkulator);
     }
+
+    private static double pobierzDouble(Scanner scanner) {
+        System.out.print("podaj liczbe double: ");
+        double v = scanner.nextDouble();
+        System.out.println("");
+        return v;
+    }
+
 }
