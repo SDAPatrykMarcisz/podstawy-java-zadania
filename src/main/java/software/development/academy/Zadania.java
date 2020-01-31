@@ -447,29 +447,70 @@ public class Zadania {
     // • jest podzielna przez 3 - wypisz "Podzielna przez 3",
     // • jeśli przez 7 -            "Podzielna przez 7",
     // • jeśli przez 3 i 7 -        "Podzielna przez 3 i 7".
-    static void zadanie21(){
+    static void zadanie21() {
         int liczba = 24;
 
-        if((liczba % 3 == 0) && (liczba % 7 == 0)){
+        if ((liczba % 3 == 0) && (liczba % 7 == 0)) {
             System.out.println("liczba podzielna przez 3 i 7");
-        } else if(liczba % 7 == 0){
+        } else if (liczba % 7 == 0) {
             System.out.println("liczba podzielna przez 7");
-        } else if (liczba % 3 == 0){
+        } else if (liczba % 3 == 0) {
             System.out.println("liczba podzielna przez 3");
         }
 
         System.out.print("Liczba podzielna przez: ");
-        for(int i=1; i <= liczba; i++ ){
-            if(liczba % i == 0){
+        for (int i = 1; i <= liczba; i++) {
+            if (liczba % i == 0) {
                 System.out.print(i);
-                if(i != liczba){
+                if (i != liczba) {
                     System.out.print(" ");
                 }
             }
         }
     }
 
+    // Napisz program który sprawdzi czy dany znak należy do alfabetu, czy też nie.
+    // Wykorzystaj do tego możliwość rzutowania znaku char na int (int)a
+    // gdzie a - char, oraz tablice ASCII
+    static void zadanie22() {
+        char znak = ' ';
+        int znakJakoLiczba = (int) znak;
+        boolean duzaLitera = (znakJakoLiczba >= 65) && (znakJakoLiczba <= 90);
+        boolean malaLitera = (znakJakoLiczba >= 97) && (znakJakoLiczba <= 122);
+
+        if (duzaLitera || malaLitera) {
+            System.out.println("jest literą");
+        } else {
+            System.out.println("nie jest literą");
+        }
+
+        for (int i = 0; i < 255; i++) {
+            znakJakoLiczba = (char) i;
+            duzaLitera = (znakJakoLiczba >= 65) && (znakJakoLiczba <= 90);
+            malaLitera = (znakJakoLiczba >= 97) && (znakJakoLiczba <= 122);
+
+            if (duzaLitera || malaLitera) {
+                System.out.println("znak alfabetu " + (char) i + " o kodzie " + i);
+            } else {
+                System.out.println("innt znak " + (char) i + " o kodzie " + i);
+            }
+        }
+    }
+
+    //Oblicz sumę cyfr zadanej liczby
+    static void sumaCyfrZadanejLiczby() {
+        int liczba = 112321323;
+        int suma = 0;
+        do {
+            int ostatniaCyfra = liczba % 10;
+            suma += ostatniaCyfra;
+            liczba = liczba / 10;
+        } while (liczba > 0);
+        System.out.println(suma);
+    }
+
+
     public static void main(String[] args) {
-        zadanie21();
+        sumaCyfrZadanejLiczby();
     }
 }
